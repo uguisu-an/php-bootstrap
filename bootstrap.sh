@@ -2,12 +2,6 @@
 
 set -C
 
-gibo dump Composer Node > .gitignore
-cat <<EOS
-# PHPUnit
-.phpunit.result.cache
-EOS >> .gitignore
-
 composer init -l MIT -s dev
 composer require --dev phpunit/phpunit
 
@@ -16,13 +10,16 @@ npm install -D prettier @prettier/plugin-php
 
 RESOURCE_URL=https://raw.githubusercontent.com/uguisu-an/php-bootstrap/main/resources
 
-curl -S "{$RESOURCE_URL}/editorconfig.ini" ./.editorconfig
-curl -S "{$RESOURCE_URL}/prettierrc.json" ./.prettierrc
-curl -S "{$RESOURCE_URL}/prettierignore" ./.prettierignore
-curl -S "{$RESOURCE_URL}/phpunit.xml" ./phpunit.xml
+curl -S "{$RESOURCE_URL}/editorconfig.ini" > ./.editorconfig
+curl -S "{$RESOURCE_URL}/prettierrc.json" > ./.prettierrc
+curl -S "{$RESOURCE_URL}/prettierignore" > ./.prettierignore
+curl -S "{$RESOURCE_URL}/phpunit.xml" > ./phpunit.xml
+
+gibo dump Composer Node > .gitignore
+curl -S "{$RESOURCE_URL}/gitignore" >> .gitignore
 
 mkdir -p src/Domain/Models
 mkdir -p src/Application/Services
 mkdir -p tests/Unit
 
-curl -S "{$RESOURCE_URL}/tests/TestCase.php" ./tests/TestCase.php
+curl -S "{$RESOURCE_URL}/tests/TestCase.php" > ./tests/TestCase.php
