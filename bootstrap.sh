@@ -2,6 +2,8 @@
 
 set -C
 
+git init
+
 composer init -l MIT -s dev
 composer require --dev phpunit/phpunit
 
