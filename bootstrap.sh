@@ -6,7 +6,7 @@ RESOURCE_URL=https://raw.githubusercontent.com/uguisu-an/php-bootstrap/main/reso
 
 git init
 
-composer init -l MIT
+composer init -l MIT -a src
 composer require --dev phpunit/phpunit
 
 curl -s "${RESOURCE_URL}/package.json" > package.json
